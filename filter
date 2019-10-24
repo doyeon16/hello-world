@@ -24,9 +24,71 @@ erosion=cv2.erode(img, kernel, iterations=1)
 참고 : (함수설명) https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html
 
 
-*pytesseract
+*pytesseract  (아나콘다에서 지원 안하는것 같다는 글이...)
 tessaract 파이썬 설치
 conda install pillow
 conda install pytesseract
  참고 : https://niceman.tistory.com/157
-
+ 
+ https://m.blog.naver.com/samsjang/220694855018
+  -> <tesseract-OCR을 활용한 OCR 프로그램 구현> (블로그 안 내용)
+  오픈소스인 tesseract-OCR이용하여 이미지에서 영문 및 숫자를 텍스트로 출력하는 프로그램 구현
+  
+  <사전준비작업>
+  pip을 이용해 pillow와 pytesseract설치
+  pip install pillow 
+  pip install pytesseract
+  
+  pillow는 파이썬 PIL라이브러리의 수정 배포판. Python Imaging Library의 약자로 파이썬에서 이미지 처리와 관련한 다양한 함수 제공
+  
+  블로그 안 링크에서 tesseract-ocr-setup찾아 다운받아서 설치 이 실행파일은 tesseract-ocr의 윈도우용 설치 파일
+  
+  terreract-ocr 이용한 파이썬 코드
+  from PIL import Image
+  from pytesseract import *
+  
+  def OCR(imgfile, lang='eng'):
+  im=image.open(imagefile)
+  text=image_to_string(im, lang=lang)
+  
+  print('+++ result +++')
+  print(text)
+  
+  -------------------------------
+  opencv/pytesseract를 활용한 image2text 
+  -> 블로그 : https://shinminyong.tistory.com/5
+  
+  불러들인 이미지 파일을 pytesseract를 이용하여 text로 변환시킴
+  text=pytesseract.image_to_string(img, lang='kor') 영어면 'euc'
+  
+  print(text)
+  
+  ------------------------
+  참고 : https://nittaku.tistory.com/278
+  pytesseract설치(아나콘다에서 지원 안하는것 같다고 함.18년도 블로그)
+  pip install pytesseract
+  
+  *설치 확인
+  import sys
+  import cv2
+  import pytesseract
+  from PIL import Image
+  
+  tesseract_path='경로'
+  pytesseract.pytesseract.tesseract_cmd=tesseract_path + '/tesseract'
+  
+  print("pytesseract", pytesseract.image_to_string(Image.open('images/test.png')))
+  하면 버전 출력됨
+  
+  ------------------------------------
+  아나콘다 클라우드의 pytesseract..? https://anaconda.org/conda-forge/pytesseract/files
+  
+  
+  설치+응용 : https://junyoung-jamong.github.io/computer/vision,/ocr/2019/01/30/Python%EC%97%90%EC%84%9C-Tesseract%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-OCR-%EC%88%98%ED%96%89%ED%95%98%EA%B8%B0.html
+   - 언어에 관계없이 tesseract를 이용하기 위해서는 과년 프로그램 설치해야함(사진으로 나옴)
+   - python에서 tesseract를 이용하기 위해 관련 모듈인 python-tesseract를 설치해줘야 함.
+     = pip install pytesseract
+     
+     이미지에서 텍스트 추출하는 함수 = pytesseract.image_to_string()
+  
+  
