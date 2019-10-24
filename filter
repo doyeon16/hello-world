@@ -1,0 +1,32 @@
+* erode filter
+이미지 형태전환(erosion and dilatior)
+이미지 형태전환은 기본적으로 binary image 상에서 이루어짐
+2개의 input이 필요함(원본 이미지, 커널)
+커널은 image transformation을 결정하는 구조화된 요소
+erosion은 이미지를 침식시키는것
+커널의 크기가 크거나, 반복횐수가 많아지면 과하게 적용되어 경계가 없어질 수도 있다
+
+Erosion
+-이미지를 침식시키는것
+-foreground가 되는 이미지의 경계부분을 침식시켜서 background이미지로 전환함
+-foreground 이미지가 가늘게 됨
+- 흐릿한 경계부분은 배경으로 만들어버린다고 생각하면 좋음
+이미지는 Matrix이며 작은 (n*n)커널 창으로 이미지 전체를 훝으면서 커널 창에 들어온 matrix값들을 변경한다.
+
+erosion=cv2.erode(img, kernel, iterations=1)
+ - img=erosion을 수행할 원본 이미지
+ - kernal=erosion을 위한 커널
+ - iterations=erosion반복 횟수
+ 
+ 
+참고 : https://m.blog.naver.com/samsjang/220505815055 (noise제거 관련 포함)
+참고 : https://webnautes.tistory.com/1257
+참고 : (함수설명) https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html
+
+
+*pytesseract
+tessaract 파이썬 설치
+conda install pillow
+conda install pytesseract
+ 참고 : https://niceman.tistory.com/157
+
